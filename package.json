@@ -1,0 +1,22 @@
+{
+  "name": "back-end-development",
+  "version": "1.0.0",
+  "description": "setting backend development nodejs and expressjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "postman",
+    "git",
+    "endpoint",
+    "api"
+  ],
+  "author": "Abdul Afeez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
