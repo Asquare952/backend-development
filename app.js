@@ -89,6 +89,48 @@ app.post("/posts", (req, res) => {
   });
 });
 
+// get a single user
+app.get("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const findUser = users.find((user) => user.id === id);
+  res.json({
+    findUser,
+    message: `User with id: ${id} successfully fetched`,
+    status: "Successfull",
+  });
+});
+
+// delete user endpoint by id
+app.delete("users/:id", (req, res) => {
+  const { id } = req.params;
+  const deleteUser = users.filter((user) => user.id !== id);
+  res.json({
+    deleteUser,
+    message: `User with id: ${id} is successfully deleted`,
+  });
+});
+
+// update user endpoint by id
+app.patch("users/:id", (req, res) => {
+  const { id } = req.params;
+  const { name, email } = req.body;
+  try {
+    const findUser = users.find((user) => user.id === id);
+    if (name) {
+      findUser.name = name;
+    }
+    if (email) {
+      findUser.email = email;
+    }
+    res.json({
+      message: `User with id: ${id} is successfully updated`,
+      status: "Success",
+    });
+  } catch (error) {
+    console.log("User not found", error);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server Is Running on port: ${PORT}`);
 })
